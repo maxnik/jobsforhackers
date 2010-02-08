@@ -1,3 +1,4 @@
+# this file is modified version of the one from http://github.com/davepeck/CityGoRound.git
 # Standard Python Imports
 import os
 import sys
@@ -25,7 +26,6 @@ bootstrap_django()
 
 # AppEngine imports.
 from google.appengine.ext.webapp import util
-# from google.appengine.ext.webapp import template as template_registrar
 
 # Helper to enter the debugger.  This passes in __stdin__ and
 # __stdout__, because stdin and stdout are connected to the request
@@ -63,7 +63,6 @@ django.core.signals.got_request_exception.disconnect(django.db._rollback_on_exce
 
 def main():
     application = django.core.handlers.wsgi.WSGIHandler()
-    # template_registrar.register_template_library('citygoround.tags')    
     util.run_wsgi_app(application)
 
 if __name__ == "__main__":
