@@ -10,14 +10,14 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used 4 times in query history.
+# Unused in query history -- copied from input.
 - kind: Agency
   properties:
   - name: date_opened
   - name: passenger_miles
     direction: desc
 
-# Used 2 times in query history.
+# Unused in query history -- copied from input.
 - kind: TransitApp
   properties:
   - name: is_featured
