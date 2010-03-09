@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h1>{{ title }}</h1>
+
+  <form method="post" action="" class="job">
+    <table>
+      <tr>
+        <td class="label">{{ form.title.label_tag }}</td>
+        <td class="inputfield">
+          {{ form.title }}
+          {{ form.title.errors }}
+        </td>
+      </tr>
+      <tr>
+        <td class="label">{{ form.description.label_tag }}</td>
+        <td class="inputfield">
+          {{ form.description }}
+          {{ form.description.errors }}
+        </td>
+      </tr>
+      <tr>
+        <td class="label">{{ form.url.label_tag }}</td>
+        <td class="inputfield">
+          {{ form.url }}
+          {{ form.url.errors }}
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          <label for="id_hackernews_login">Your login at <a href="http://news.ycombinator.com/">HN</a></label>
+	</td>
+        <td class="inputfield">
+          {{ form.hackernews_login }}
+          {{ form.hackernews_login.errors }}
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" value="Submit"></td>
+      </tr>
+    </table>
+  </form>
+
+{% endblock %}

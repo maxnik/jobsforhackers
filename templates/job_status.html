@@ -1,0 +1,18 @@
+{% if job %}
+  <span id="job-status-{{ job.key.id }}">
+  {% if job.is_published %}
+    <span class="published">Published</span>
+  {% else %}
+    {% if job.is_queued %}
+      <span class="queued">Queued</span>
+    {% else %}
+      {% if job.is_failed %}
+        <span class="failed">Code wasn't found</span>
+      {% endif %}
+      Put <span class="code">{{ job.code }}</span> to your 
+      <a href="http://news.ycombinator.com/user?id={{ job.hackernews_login }}">HN profile page</a> and then
+      <a href="{% url jobs.views.check job.key.id %}" class="action ajax">Check code</a> to publish the job
+    {% endif %}
+  {% endif %}
+  </span>
+{% endif %}

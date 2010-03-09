@@ -1,0 +1,5 @@
+{% if job %}
+  <span id="job-actions-{{ job.key.id }}">
+  <a href="{% url jobs.views.edit job.key.id %}" class="action">Edit</a>&nbsp;|&nbsp;<a href="{% url jobs.views.delete job.key.id %}" class="action ajax">Delete</a>
+  </span>
+{% endif %}

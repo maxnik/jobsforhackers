@@ -1,2 +1,141 @@
+HTML,BODY,DIV,SPAN,APPLET,OBJECT,IFRAME,H1,H2,H3,H4,H5,H6,P,BLOCKQUOTE,PRE,A,ABBR,ACRONYM,ADDRESS,BIG,CITE,CODE,DEL,DFN,EM,FONT,IMG,INS,KBD,Q,S,SAMP,SMALL,STRIKE,STRONG,SUB,SUP,TT,VAR,HR,B,U,I,CENTER,DL,DT,DD,OL,UL,LI,FIELDSET,FORM,LABEL,LEGEND,TABLE,CAPTION,TBODY,TFOOT,THEAD,TR,TH,TD{padding:0;margin:0;border:none;outline:none;vertical-align:baseline;font-family:inherit;font-size:100%;}HTML{font-size:100.01%;}DFN,I,CITE,VAR,ADDRESS,EM{font-style:normal;}TH,B,STRONG,H1,H2,H3,H4,H5,H6{font-weight:normal;}TEXTAREA,INPUT,SELECT{font-family:inherit;font-size:1em;}BLOCKQUOTE,Q{quotes:none;}Q:before,Q:after,BLOCKQUOTE:before,BLOCKQUOTE:after{content:'';content:none;}OL,UL{list-style:none;}INS{text-decoration:none;}DEL{text-decoration:line-through;}TABLE{border-collapse:collapse;border-spacing:0;}CAPTION,TH,TD{text-align:left;}:focus{outline:none;}
+
 body {
+  background-color: #fafaf0;
+  color: #aaa;
+  font-family: sans-serif;
+  font-size: 16px;
+  padding: 0.7em;
+}
+
+h1 {
+  font-weight: bold;
+}
+h1,
+#top #logo {
+  font-size: 1.7em;
+}
+#top {
+  padding: 0 1em;
+  position: relative;
+}
+#top #current-user-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+a {
+  color: #aaa;
+}
+a.action,
+#top #logo {
+  color: #8cc402;
+}
+a.job,
+form.job label,
+form.job label a,
+span.code,
+.job-description {
+  color: #3f3f3f;  
+}
+a.ajax {
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+}
+
+ul#menu,
+.jobs {
+  list-style: none;
+}
+
+ul#menu {
+  float: left;
+}
+
+ul#menu li {
+  width: 7em;
+  display: inline;
+  float: right;
+  text-align: center;
+}
+
+ul#menu li#info {
+  float: left;
+  width: 27em;
+  text-align: left;
+}
+
+#menu,
+#content,
+form.job {
+  margin: 0.7em 0;
+  padding: 0 1em;
+}
+
+#content {
+  clear: both;
+}
+
+form.job table td.label {
+  width: 14em;
+}
+form.job td.label {
+  vertical-align: top;
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 4px;
+}
+form.job input,
+form.job textarea {
+  padding: 4px;
+  margin: 4px;
+  font-size: 18px;
+}
+form.job td.inputfield input,
+form.job td.inputfield textarea {
+  width: 27em;
+}
+form.job .errorlist {
+  color: #f00;
+}
+
+span.code,
+span.published,
+span.queued, 
+span.failed {
+  padding: 4px;
+}
+span.code {
+  background-color: yellow;
+}
+span.published {
+  background-color: green;
+}
+span.failed {
+  background-color: red;
+}
+span.queued {
+  background-color: blue;
+}
+span.queued,
+span.failed,
+span.published {
+  color: white;
+}
+
+.jobs li {
+  margin: 1em 0;
+  line-height: 1.5em;
+}
+.jobs {
+  padding-top: 0.5em;
+}
+
+.job-description {
+  width: 40em;
+}
+.job-info {
+  margin: 1em 0;
 }

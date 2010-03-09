@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <h1>{{ title }}</h1>
+
+  <ul class="jobs">
+  {% for job in jobs %}
+    <li>
+      {% include "job_status.html" %}
+      <a href="{% url jobs.views.show job.key.id %}-{{ job.title|slugify }}" class="job">{{ job.title }}</a> 
+      submitted {{ job.created_at|timesince }} ago 
+      {% include "job_actions.html" %}
+    </li>
+  {% empty %}
+    <li>You haven't added any jobs yet. </li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

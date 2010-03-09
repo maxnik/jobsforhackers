@@ -1,1 +1,18 @@
-test
+{% extends "layout.html" %}
+{% load job_helpers %}
+
+{% block content %}
+
+<ol class="jobs">
+{% for job in jobs %}
+  <li><a href="{% url jobs.views.show job.key.id %}-{{ job.title|slugify }}" class="job">{{ job.title }}</a> 
+      by <a href="{{ job.owner_profile_url }}">{{ job.hackernews_login }}</a> 
+      <span style="color: #f00;">published timesince ago</span>
+      {% show_job_actions job current_user is_current_user_admin %}
+  </li>
+{% empty %}
+  <li>Be the first job publisher!</li>
+{% endfor %}
+</ol>
+
+{% endblock %}

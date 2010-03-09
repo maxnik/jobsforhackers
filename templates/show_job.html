@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% load job_helpers %}
+
+{% block content %}
+
+  <h1>{{ job.title }}</h1>
+
+  <p class="job-info">
+    {% show_job_status job current_user is_current_user_admin %}
+    {% show_job_actions job current_user is_current_user_admin %}
+  </p>
+
+  <p class="job-info">submitted {{ job.created_at|timesince }} ago by 
+     <a href="{{ job.owner_profile_url }}">{{ job.hackernews_login }}</a>
+  </p>
+  <p class="job-info"><a href="{{ job.url }}" class="job-description">{{ job.url }}</a></p>
+  <p class="job-description">{{ job.description|linebreaksbr }}</p>
+
+{% endblock %}

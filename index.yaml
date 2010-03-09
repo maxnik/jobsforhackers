@@ -10,16 +10,14 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Unused in query history -- copied from input.
-- kind: Agency
+- kind: Job
   properties:
-  - name: date_opened
-  - name: passenger_miles
+  - name: owner
+  - name: created_at
     direction: desc
 
-# Unused in query history -- copied from input.
-- kind: TransitApp
+- kind: Job
   properties:
-  - name: is_featured
-  - name: date_added
+  - name: status
+  - name: published_at
     direction: desc

@@ -5,11 +5,34 @@
     <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/static/style.css" type="text/css">
-    <!-- http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js -->
-    <script type="text/javascript" src="/static/jquery-1.4.1.min.js"></script>
-    <script type="text/javascript" src="/static/application.js"></script>
-    <title></title>
+    <title>Jobs for Hackers: {{ title }}</title>
+    {% if current_user %}
+      <!-- http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js -->
+      <script type="text/javascript" src="/static/jquery-1.4.1.min.js"></script>
+      <script type="text/javascript" src="/static/application.js"></script>
+    {% endif %}
   </head>
   <body>
+    <div id="top">
+      <a href="/" id="logo">Jobs for Hackers</a>
+      {% if current_user %}
+        <div id="current-user-info">
+          {{ current_user.nickname }}
+          <a href="{{ logout_url }}" class="action">Log out</a>
+        </div>
+      {% endif %}
+    </div>
+    <ul id="menu">
+      <li id="info">
+          You need a <a href="https://www.google.com/accounts/">Google Account</a> 
+          (it won't be shown anywhere) and a <a href="http://news.ycombinator.com/">Hacker News</a> account to add jobs.
+      </li>
+      <li><a href="/about" class="action">How it works</a></li>
+      <li><a href="/jobs/my" class="action">My jobs</a></li>
+      <li><a href="/jobs/new" class="action">Add new job</a></l>
+    </ul>
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
