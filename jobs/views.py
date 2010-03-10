@@ -8,10 +8,15 @@ from django.utils import simplejson
 from jobs.forms import JobForm, PublishedJobForm
 from jobs.models import Job
 from google.appengine.api import users
+from pager import PagerQuery
 
 def list(request):
-    jobs = Job.all().filter('status =', 'published').order('-published_at')
-    return _custom_render_to_response('list_jobs.html', {'jobs': jobs, 'title': 'Newest'})
+    PER_PAGE = 10
+    bookmark = request.GET.get('bookmark')
+    query = PagerQuery(Job).filter('status =', 'published').order('-published_at')
+    prev, jobs, next = query.fetch(PER_PAGE, bookmark)
+    return _custom_render_to_response('list_jobs.html',
+                                      {'jobs': jobs, 'prev': prev, 'next': next, 'title': 'Newest'})
 
 def my(request):
     jobs = Job.all().filter('owner =', users.get_current_user()).order('-created_at')

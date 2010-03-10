@@ -12,8 +12,28 @@ indexes:
 
 - kind: Job
   properties:
+  - name: created_at
+  - name: __key__
+    direction: desc
+
+- kind: Job
+  properties:
   - name: owner
   - name: created_at
+    direction: desc
+
+- kind: Job
+  properties:
+  - name: published_at
+  - name: status
+  - name: __key__
+    direction: desc
+
+- kind: Job
+  properties:
+  - name: status
+  - name: published_at
+  - name: __key__
     direction: desc
 
 - kind: Job

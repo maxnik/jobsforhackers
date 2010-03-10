@@ -27,7 +27,7 @@
           {{ form.url.errors }}
         </td>
       </tr>
-      {% if job and not job.is_published %}
+      {% if not job.is_published %}
         <tr>
           <td class="label">
             <label for="id_hackernews_login">Your login at <a href="http://news.ycombinator.com/">HN</a></label>

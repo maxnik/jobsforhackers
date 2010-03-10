@@ -15,4 +15,13 @@
 {% endfor %}
 </ol>
 
+<ul class="pagination">
+{% if prev %}
+  <li><a href="{% url jobs.views.list %}?bookmark={{ prev }}" class="action">Previous page</a></li>
+{% endif %}
+{% if next %}
+  <li><a href="{% url jobs.views.list %}?bookmark={{ next }}" class="action">Next page</a></li>
+{% endif %}
+</ul>
+
 {% endblock %}
