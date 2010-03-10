@@ -5,12 +5,12 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils import simplejson
-from jobs.forms import JobForm
+from jobs.forms import JobForm, PublishedJobForm
 from jobs.models import Job
 from google.appengine.api import users
 
 def list(request):
-    jobs = Job.all() #.filter('status =', 'published').order('-published_at')
+    jobs = Job.all().filter('status =', 'published').order('-published_at')
     return _custom_render_to_response('list_jobs.html', {'jobs': jobs, 'title': 'Newest'})
 
 def my(request):
@@ -42,7 +42,10 @@ def show(request, job_id):
 def edit(request, job_id):
     job = _get_job_or_404(job_id)
     if request.method == 'POST':
-        form = JobForm(request.POST)
+        if job.is_published:
+            form = PublishedJobForm(request.POST)
+        else:
+            form = JobForm(request.POST)
         if form.is_valid():
             for (field, value) in form.cleaned_data.items():
                 setattr(job, field, value)
@@ -52,8 +55,11 @@ def edit(request, job_id):
         initial_form_values = {}
         for field in job.properties().keys():
             initial_form_values[field] = getattr(job, field)
-        form = JobForm(initial_form_values)
-    return _custom_render_to_response('job_form.html', {'form': form, 'title': 'Edit my job'})
+        if job.is_published:
+            form = PublishedJobForm(initial_form_values)
+        else:
+            form = JobForm(initial_form_values)
+    return _custom_render_to_response('job_form.html', {'form': form, 'job': job, 'title': 'Edit my job'})
 
 def check(request, job_id):
     job = _get_job_or_404(job_id)

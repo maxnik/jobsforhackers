@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Jobs for Hackers</title>
+    <link>http://{{ host }}</link>
+    <description>Job postings from users of Hacker News http://news.ycombinator.com.</description>
+    <pubDate>{{ pub_date|date:"r" }}</pubDate>    
+    <lastBuildDate>{{ pub_date|date:"r" }}</lastBuildDate>
+  {% for job in jobs %}
+    <item>
+      <title>{{ job.title }}</title>
+      <link>http://{{ host }}/jobs/{{ job.key.id }}-{{ job.title|slugify }}</link>
+      <description>{{ job.description }}</description>
+      <pubDate>{{ job.created_at|date:"r" }}</pubDate>
+    </item>
+  {% endfor %}
+  </channel>
+</rss>
+

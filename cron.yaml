@@ -1,0 +1,4 @@
+cron:
+- description: Check code for queued jobs to publish it
+  url: /check_queued_jobs
+  schedule: every 5 minutes

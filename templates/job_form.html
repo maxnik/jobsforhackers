@@ -27,15 +27,17 @@
           {{ form.url.errors }}
         </td>
       </tr>
-      <tr>
-        <td class="label">
-          <label for="id_hackernews_login">Your login at <a href="http://news.ycombinator.com/">HN</a></label>
-	</td>
-        <td class="inputfield">
-          {{ form.hackernews_login }}
-          {{ form.hackernews_login.errors }}
-        </td>
-      </tr>
+      {% if job and not job.is_published %}
+        <tr>
+          <td class="label">
+            <label for="id_hackernews_login">Your login at <a href="http://news.ycombinator.com/">HN</a></label>
+	  </td>
+          <td class="inputfield">
+            {{ form.hackernews_login }}
+            {{ form.hackernews_login.errors }}
+          </td>
+        </tr>
+      {% endif %}
       <tr>
         <td>&nbsp;</td>
         <td><input type="submit" value="Submit"></td>

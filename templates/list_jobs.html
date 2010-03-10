@@ -6,8 +6,8 @@
 <ol class="jobs">
 {% for job in jobs %}
   <li><a href="{% url jobs.views.show job.key.id %}-{{ job.title|slugify }}" class="job">{{ job.title }}</a> 
-      by <a href="{{ job.owner_profile_url }}">{{ job.hackernews_login }}</a> 
-      <span style="color: #f00;">published timesince ago</span>
+      published by <a href="{{ job.owner_profile_url }}">{{ job.hackernews_login }}</a> 
+      {{ job.published_at|timesince }} ago
       {% show_job_actions job current_user is_current_user_admin %}
   </li>
 {% empty %}

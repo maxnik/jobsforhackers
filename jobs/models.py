@@ -36,8 +36,12 @@ class Job(db.Model):
         self.status = 'queued'
         self.queued_at = datetime.now()
 
+    def fail(self):
+        self.status = 'failed'
+
     def owned_by(self, current_user, is_current_user_admin):
         return (current_user and self.owner.user_id() == current_user.user_id()) or is_current_user_admin
 
+    @property
     def owner_profile_url(self):
         return "http://news.ycombinator.com/user?id=%s" % (self.hackernews_login,)

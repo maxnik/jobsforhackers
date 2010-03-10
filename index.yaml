@@ -21,3 +21,14 @@ indexes:
   - name: status
   - name: published_at
     direction: desc
+
+- kind: Job
+  properties:
+  - name: status
+  - name: queued_at
+
+- kind: Job
+  properties:
+  - name: status
+  - name: queued_at
+    direction: desc

@@ -13,6 +13,13 @@ handlers:
 - url: /stats.*
   script: $PYTHON_LIB/google/appengine/ext/appstats/ui.py
 
+- url: /check_queued_jobs
+  script: services.py
+  login: admin
+
+- url: /rss
+  script: services.py
+
 - url: /static
   static_dir: static
 
