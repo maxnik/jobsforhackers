@@ -1,6 +1,6 @@
 import os
 
-DEBUG = True
+DEBUG = False
 
 APPEND_SLASH = False
 
@@ -14,7 +14,7 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'urls'
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 TEMPLATE_DIRS = [os.path.join(os.path.dirname(__file__), 'templates')]
 
