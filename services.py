@@ -4,6 +4,9 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import urlfetch
 from jobs.models import Job
 
+from google.appengine.dist import use_library
+use_library('django', '1.1')
+
 class CheckQueuedJobsHandler(webapp.RequestHandler):
     def get(self):
         job = Job.all().filter('status =', 'queued').order('queued_at').fetch(1)
