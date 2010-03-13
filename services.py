@@ -4,6 +4,9 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import urlfetch
 from jobs.models import Job
 
+import sys
+for k in [k for k in sys.modules if k.startswith('django')]:
+    del sys.modules[k] 
 from google.appengine.dist import use_library
 use_library('django', '1.1')
 
