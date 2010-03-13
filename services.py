@@ -6,7 +6,8 @@ from jobs.models import Job
 
 import sys
 for k in [k for k in sys.modules if k.startswith('django')]:
-    del sys.modules[k] 
+    del sys.modules[k]
+# workaround above is to prevent UnacceptableVersionError exception
 from google.appengine.dist import use_library
 use_library('django', '1.1')
 
