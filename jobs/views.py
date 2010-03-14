@@ -8,6 +8,7 @@ from django.utils import simplejson
 from jobs.forms import JobForm, PublishedJobForm
 from jobs.models import Job
 from google.appengine.api import users
+from google.appengine.api import urlfetch
 from pager import PagerQuery
 
 def list(request):
@@ -103,3 +104,36 @@ def _auth_processor(request):
 def _custom_render_to_response(template_name, context_dict):
     # we pass RequestContext instance for _auth_processor above to work
     return render_to_response(template_name, context_dict, context_instance=RequestContext({}))
+
+def rss(request):
+    jobs = Job.all().filter('status =', 'published').order('-published_at').fetch(20)
+    jobs_published_at = [job.published_at for job in jobs]
+    if jobs_published_at:
+        pub_date = max(jobs_published_at)
+    else:
+        pub_date = None
+    return render_to_response('rss.xml',
+                              {'jobs': jobs,
+                               'host': request.get_host(),
+                               'pub_date': pub_date},
+                              mimetype='application/rss+xml')
+
+def check_queued(request):
+    job = Job.all().filter('status =', 'queued').order('queued_at').fetch(1)
+    if job:
+        job = job[0] # fetch() returns list of items
+        result = urlfetch.fetch(job.owner_profile_url)
+        if result.status_code == 200:
+            try: # if owner's profile contents code, this will pass silently
+                result.content.index(job.code)
+                job.publish()
+                job.put()
+                return HttpResponse('Published')
+            except ValueError:
+                pass
+        job.fail()
+        job.put()
+        return HttpResponse('Failed')
+    else:
+        return HttpResponse('No queued jobs.')
+

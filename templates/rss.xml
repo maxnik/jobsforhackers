@@ -11,7 +11,7 @@
       <title>{{ job.title }}</title>
       <link>http://{{ host }}/jobs/{{ job.key.id }}-{{ job.title|slugify }}</link>
       <description>{{ job.description }}</description>
-      <pubDate>{{ job.created_at|date:"r" }}</pubDate>
+      <pubDate>{{ job.published_at|date:"r" }}</pubDate>
     </item>
   {% endfor %}
   </channel>
