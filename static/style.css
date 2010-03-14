@@ -29,14 +29,16 @@ a {
   color: #aaa;
 }
 a.action,
-#top #logo {
+#top #logo,
+.about a {
   color: #8cc402;
 }
 a.job,
 form.job label,
 form.job label a,
 span.code,
-.job-description {
+.job-description,
+.about {
   color: #3f3f3f;  
 }
 a.ajax {
@@ -135,9 +137,14 @@ span.published {
   padding-top: 0.05em;
 }
 
-.job-description {
+.job-description,
+.about {
   width: 40em;
 }
 .job-info {
+  margin: 1em 0;
+}
+
+.about p {
   margin: 1em 0;
 }
