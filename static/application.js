@@ -15,6 +15,7 @@ $(document).ready(function () {
 	  }
 	},
 	type: 'POST',
+	data: '', // without this jQuery doesn't send Content-Length headers for POST requests
 	url: this.href,
 	dataType: 'json'
       });
