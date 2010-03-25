@@ -47,11 +47,6 @@ a.ajax {
   border-bottom-style: dashed;
 }
 
-ul#menu,
-.pagination{
-  float: left;
-}
-
 ul#menu li {
   width: 7em;
   display: inline;
@@ -74,8 +69,7 @@ ul#menu li#info {
 #menu,
 #content,
 form.job {
-  margin: 0.7em 0;
-  padding: 0 1em;
+  padding: 0.7em 1em 0;
 }
 
 #content {
@@ -130,7 +124,6 @@ span.published {
 }
 
 .jobs li {
-  margin: 1.5em 0;
   line-height: 1.5em;
 }
 .jobs,
@@ -146,6 +139,7 @@ span.published {
   margin: 1em 0;
 }
 
+.jobs li,
 .about p {
   margin: 1em 0;
 }
