@@ -3,16 +3,21 @@
 {% block content %}
 
 <div class="about">
-
-
   <p> This site is intended to replace <a href="http://news.ycombinator.com/item?id=1103801">"Who's hiring"</a>
       <a href="http://news.ycombinator.com/item?id=759452">threads</a> on Hacker News.
       The idea of it came from <a href="http://news.ycombinator.com/item?id=1133360">this thread</a>.
   </p>
 
+  <p>Word 'hacker' used in the title means the same as in famous <a href="http://jonathanscorner.com/hacker/">Hiring Hacker
+     FAQ</a>. The favicon is the <a href="http://catb.org/hacker-emblem/">glider hacker emblem</a>.
+  </p>
+
+  <p>After you add a new job to the site, the system will generate 4-symbol code for this job. You must copy this code to your profile page at HN. Just after that put your job to queue with 'Check code' link near job title on 'My jobs' page. Every 5 minutes the system takes one job from the queue and loads profile page for the submitter of the job. If there will be 4-symbol code for this job, the job will be visible to everyone and published at first page of the site.
+  </p>
+
   <p>The site is written in <strong>Python</strong> on top of the <strong>Django</strong> 1.1 framework and is run on
      <strong>Google App Engine</strong> platform. 
-     Full source of the site is available on <a href="http://github.com/maxnik/jobsforhackers">Github</a>.
+     <a href="http://github.com/maxnik/jobsforhackers">Full source code</a> of the site is available on Github.
      Feel free to send any feedback or questions to maxim.nikolenko googlemail.
   </p>
 </div>
